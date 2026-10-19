@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://db7lbdnoew1ig"]
+
+[ext_resource type="Texture2D" uid="uid://cpogk2tts7f2h" path="res://resources/iron.png" id="1_dttaf"]
+[ext_resource type="Script" uid="uid://d25femx4ybdvc" path="res://scenes/iron.gd" id="1_kcsae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(153, 155)
+
+[node name="iron" type="Area2D" unique_id=330626346]
+position = Vector2(100, 200)
+script = ExtResource("1_kcsae")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=328630981]
+position = Vector2(-0.5000076, 0.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=689136802]
+position = Vector2(33.499992, 64.500015)
+scale = Vector2(9.71875, 9.84375)
+texture = ExtResource("1_dttaf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

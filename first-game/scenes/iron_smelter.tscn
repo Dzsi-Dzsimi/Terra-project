@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://ct4il3p563jhy"]
+
+[ext_resource type="Script" uid="uid://bdbwqlq787cid" path="res://scenes/iron_smelter.gd" id="1_gpk48"]
+[ext_resource type="Texture2D" uid="uid://c2v77tb8j2chu" path="res://resources/iron processor.png" id="2_gpk48"]
+[ext_resource type="Texture2D" uid="uid://bhgtlvc5t0jbu" path="res://resources/iron_smelter.png" id="3_gpk48"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbxrn"]
+atlas = ExtResource("2_gpk48")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fhtf"]
+atlas = ExtResource("2_gpk48")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2gag"]
+atlas = ExtResource("2_gpk48")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ptob"]
+atlas = ExtResource("2_gpk48")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ykii"]
+atlas = ExtResource("2_gpk48")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbxrn")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fhtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2gag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ptob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ykii")
+}],
+"loop": 1,
+"name": &"working",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(159, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev0mo"]
+atlas = ExtResource("3_gpk48")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pivuv"]
+atlas = ExtResource("3_gpk48")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev0mo")
+}],
+"loop": 1,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pivuv")
+}],
+"loop": 1,
+"name": &"on",
+"speed": 5.0
+}]
+
+[node name="iron_smelter" type="Area2D" unique_id=2055994937]
+script = ExtResource("1_gpk48")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=163594367]
+position = Vector2(144, 1)
+scale = Vector2(6.4218745, 6.6874995)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"working"
+frame_progress = 0.45264673
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537028412]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=743034149]
+position = Vector2(-2.4136624, -1.489552)
+rotation = 1.5707964
+scale = Vector2(4.707129, 4.6588593)
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+animation = &"off"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dda70qel3utwv"]
+
+[ext_resource type="Texture2D" uid="uid://bee12j7bbxmb1" path="res://resources/chad.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://dqdeati38vvjh" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[node name="enemy" type="CharacterBody2D" unique_id=1178643611]
+script = ExtResource("1_md0e3")
+
+[node name="chad" type="Sprite2D" parent="." unique_id=1662992601]
+position = Vector2(1, 0)
+scale = Vector2(2.4999998, 2.40625)
+texture = ExtResource("1_7p1mj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1160329280]
+position = Vector2(1.0000001, 2.3841858e-07)
+scale = Vector2(1.892857, 1.821553)
+polygon = PackedVector2Array(-4, -10, -10, -3, -11, 8, -20, 10, -13, 14, -12, 20, 10, 20, 7, 16, 15, 14, 8, 10, 8, -10, 2, -16, -7, -19)

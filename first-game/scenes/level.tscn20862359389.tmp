@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dv1vfbndf103q"]
+
+[ext_resource type="PackedScene" uid="uid://b05vrk3rcaoji" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://52v7n1cmhgin" path="res://scenes/level.gd" id="1_mx8sn"]
+[ext_resource type="Texture2D" uid="uid://37femjvcq0p8" path="res://resources/spawn.png" id="2_2r41h"]
+[ext_resource type="PackedScene" uid="uid://cfsfw4jvlsvao" path="res://scenes/borders.tscn" id="3_w8frs"]
+[ext_resource type="PackedScene" uid="uid://db7lbdnoew1ig" path="res://scenes/iron.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://ct4il3p563jhy" path="res://scenes/iron_smelter.tscn" id="6_klq6b"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yf5fn"]
+
+[node name="level" type="Node2D" unique_id=177693738]
+script = ExtResource("1_mx8sn")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=697134132]
+position = Vector2(905, 497.50006)
+scale = Vector2(1812.0002, 1003)
+texture = SubResource("PlaceholderTexture2D_yf5fn")
+
+[node name="spawn1" type="Sprite2D" parent="." unique_id=203545564]
+position = Vector2(113, 892)
+scale = Vector2(2.3125002, 2.46875)
+texture = ExtResource("2_2r41h")
+
+[node name="spawn2" type="Sprite2D" parent="." unique_id=828059802]
+position = Vector2(1694, 94.5)
+scale = Vector2(2.3125002, 2.46875)
+texture = ExtResource("2_2r41h")
+
+[node name="iron" parent="." unique_id=330626346 instance=ExtResource("4_mx8sn")]
+position = Vector2(113, 121)
+
+[node name="Player" parent="." unique_id=1232372118 instance=ExtResource("1_2q6dc")]
+
+[node name="borders" parent="." unique_id=1964220446 instance=ExtResource("3_w8frs")]
+
+[node name="bullets" type="Node2D" parent="." unique_id=526746593]
+
+[node name="bullet_timer" type="Timer" parent="." unique_id=1267988319]
+wait_time = 2.0
+autostart = true
+
+[node name="enemy_timer" type="Timer" parent="." unique_id=537233747]
+wait_time = 3.0
+autostart = true
+
+[node name="enemies" type="Node2D" parent="." unique_id=1615909988]
+
+[node name="iron_smelter" parent="." unique_id=2055994937 instance=ExtResource("6_klq6b")]
+position = Vector2(1565, 898)
+
+[connection signal="timeout" from="bullet_timer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="enemy_timer" to="." method="_on_enemy_timer_timeout"]

@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	position = Vector2(500, 500)
-	print(self.get_path())
+	#print(self.get_path())
 	add_to_group("player")
 
 func _physics_process(delta: float) -> void:

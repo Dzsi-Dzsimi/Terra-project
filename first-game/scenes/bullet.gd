@@ -23,9 +23,9 @@ func _on_body_entered(body: Node2D) -> void:
 	print(body)
 	print(body.get_groups())
 	if body.is_in_group("enemy"):
-		print("enemy")
+		#print("enemy")
 		body.queue_free()
 		queue_free()
 	elif body.is_in_group("wall"):
-		print("wall")
+		#print("wall")
 		queue_free()
